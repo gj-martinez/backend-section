@@ -20,7 +20,8 @@ class BaseRepository{
     };
 
     async delte(id){
-        return await this.model.findByIdAndDelete(id);
+        await this.model.findByIdAndDelete(id);
+        return true;
     };
 
 }
