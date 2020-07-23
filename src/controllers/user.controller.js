@@ -13,6 +13,7 @@ class UserController{
 
     async getAll(req, res){
         const users = await _userService.getAll();
+        console.log("controler " + users);
         return res.send(users);
     };
 

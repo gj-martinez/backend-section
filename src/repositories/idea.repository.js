@@ -1,6 +1,4 @@
 const BaseRepository = require('./base.repository');
-const { model } = require('../models/user.model');
-
 let _idea = null;
 
 class IdeaRepository extends BaseRepository{

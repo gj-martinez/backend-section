@@ -6,7 +6,7 @@ const {ErrorMiddleware, NotFoundMiddleware} = require('../middlewares')
 require('express-async-errors');
 
 
-module.exports = function({HomeRoutes}){
+module.exports = function({HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes}){
     const router = express.Router();
     const apiRuotes = express.Router();
 
@@ -17,6 +17,9 @@ module.exports = function({HomeRoutes}){
         .use(compression());
 
     apiRuotes.use("/home", HomeRoutes);
+    apiRuotes.use("/user", UserRoutes);
+    apiRuotes.use("/idea", IdeaRoutes);
+    apiRuotes.use("/comment", CommentRoutes);
 
     router.use("/v1/api", apiRuotes);
     

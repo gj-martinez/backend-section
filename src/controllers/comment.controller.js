@@ -1,6 +1,6 @@
 let _commentService = null;
 
-class ComentController{
+class CommentController{
     constructor({ CommentService}){
         _commentService =  CommentService
     }
@@ -26,7 +26,7 @@ class ComentController{
         return res.send(commentDelete);
     }
 
-    async getIdeasComments(req,res){
+    async getIdeaComments(req,res){
         const {ideaId} = req.params;
 
         const comments = await _commentService.getIdeasComments(ideaId);
@@ -43,4 +43,4 @@ class ComentController{
 
 }
 
-module.exports = ComentController;
+module.exports = CommentController;

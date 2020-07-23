@@ -12,9 +12,18 @@ class IdeaController{
     };
 
     async getAll(req, res){
-        const ideas = await  _ideaService.getAll();
+        const ideas = await _ideaService.getAll();
+        console.log("controler " + ideas);
         return res.send(ideas);
     };
+
+    async getUserIdeas(req, res){
+        const {userId} = req.params;
+
+        const ideas = await _ideaService.getUserIdeas(userId);
+        return res.send(ideas);
+    };
+
     async create(req, res){
         const {body} = req;
         const createIdea = await _ideaService.create(body);
@@ -46,7 +55,7 @@ class IdeaController{
         return res.send(idea);
     }
 
-
+    
 }
 
 module.exports = IdeaController;

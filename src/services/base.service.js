@@ -24,6 +24,7 @@ class BaseService{
     }
 
     async getAll(){
+        console.log("services user " + this.repository);
         return await this.repository.getAll();
     }
 
