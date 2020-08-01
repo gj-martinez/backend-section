@@ -3,21 +3,21 @@ const {Schema} = mongoose;
 const {compareSync, hashSync, genSaltSync} = require('bcryptjs');
 
 const UserSchema = new Schema({
-    nombre: {type: String, required: true},
-    usernamr: {type: String, required: true},
+    name: {type: String, required: true},
+    username: {type: String, required: true},
     password: {type: String, required: true}
 });
 
-UserSchema.method.toJSON = function(){
-    let user = this.toObjet();
+UserSchema.methods.toJSON = function(){
+    let user = this.toObject();
     delete user.password;
     return user;
 };
 
 
-UserSchema.method.comparePasswords = function(password){
+UserSchema.methods.comparePasswords = function(password){
     return compareSync(password, this.password);
-}
+};
 
 UserSchema.pre("save", async function(next){
     const user = this;

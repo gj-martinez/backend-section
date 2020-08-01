@@ -5,5 +5,6 @@ if(process.env.NODE_ENV !== "production"){
 module.exports = {
     PORT: process.env.PORT,
     MONGO_URI: process.env.MONGO_URI,
-    APLICACTION_NAME: process.env.APLICACTION_NAME
+    APLICACTION_NAME: process.env.APLICACTION_NAME,
+    JWT_SECRET: process.env.JWT_SECRET
 }
