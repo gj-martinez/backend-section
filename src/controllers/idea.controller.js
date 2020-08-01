@@ -12,8 +12,8 @@ class IdeaController{
     };
 
     async getAll(req, res){
-        const ideas = await _ideaService.getAll();
-        console.log("controler " + ideas);
+        const {pageSize, pageNum} = req.query
+        const ideas = await _ideaService.getAll(pageSize, pageNum);
         return res.send(ideas);
     };
 
@@ -27,7 +27,7 @@ class IdeaController{
     async create(req, res){
         const {body} = req;
         const createIdea = await _ideaService.create(body);
-        return res.status(200).sen(createIdea);
+        return res.status(200).send(createIdea);
     }
     async update(req, res){
         const {body} = req;

@@ -23,9 +23,8 @@ class BaseService{
         return currentRepository;
     }
 
-    async getAll(){
-        console.log("services user " + this.repository);
-        return await this.repository.getAll();
+    async getAll(pageSize, pageNum){
+        return await this.repository.getAll(pageSize, pageNum);
     }
 
     async create(entity){
