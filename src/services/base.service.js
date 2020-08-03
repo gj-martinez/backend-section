@@ -49,7 +49,6 @@ class BaseService{
             err.message = "id mus be sent"
             throw err
         }
-
         return await this.repository.delete(id);
     }
 }

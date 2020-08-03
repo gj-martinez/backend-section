@@ -6,8 +6,8 @@ class UserController{
     }
 
     async get(req, res){
-        const {userId} = req.params;
-        const user = await _userService.get(userId);
+        const {_id} = req.params;
+        const user = await _userService.get(_id);
         return res.send(user);
     };
 
@@ -19,16 +19,16 @@ class UserController{
 
     async update(req, res){
         const {body} = req;
-        const usearId = req.params;
+        const _id = req.params;
 
-        const userUpdate = await _userService.update(usearId, body);
+        const userUpdate = await _userService.update(_id, body);
         return res.send(userUpdate);
     }
 
     async delete(req, res){
-        const {userId} = req.params;
+        const {_id} = req.params;
 
-        const userDelete = await _userService.delete(userId);
+        const userDelete = await _userService.delete(_id);
         return res.send(userDelete);
     }
 }

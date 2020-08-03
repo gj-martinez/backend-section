@@ -27,28 +27,27 @@ class IdeaService extends BaseService{
             throw err;
         }
 
-        const idea = await _ideaRepository.getUserIdeas(ideaId);
+        const idea = await _ideaRepository.get(ideaId);
         if(!idea){
             const err = new Error();
             err.status = 404;
             err.message = "idea must be sent";
             throw err;
         }
-
         idea.upvotes.push(true);
 
-        return await _ideaRepository.update(ideaId, {upvates: ideaId.upvotes});
+        return await _ideaRepository.update(ideaId, {upvotes: idea.upvotes});
     }
 
     async downvoteIdea(ideaId){
         if(!ideaId){
             const err = new Error();
             err.status = 400;
-            err.message = "ideaId must be sent";
+            err.message = "idIdea must be sent";
             throw err;
         }
 
-        const idea = await _ideaRepository.getUserIdeas(ideaId);
+        const idea = await _ideaRepository.get(ideaId);
         if(!idea){
             const err = new Error();
             err.status = 404;
@@ -58,7 +57,7 @@ class IdeaService extends BaseService{
 
         idea.downvotes.push(true);
 
-        return await _ideaRepository.update(ideaId, {downvotes: ideaId.downvotes});
+        return await _ideaRepository.update(ideaId, {downvotes: idea.downvotes});
     }
 
 }

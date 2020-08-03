@@ -30,7 +30,7 @@ class CommentService extends BaseService{
         return comment;
     }
 
-    async createComment(comment, ideaId){
+    async createComment(comment, ideaId, userId){
         if(!ideaId){
             const err = new Error();
             err.status = 400;
@@ -46,7 +46,7 @@ class CommentService extends BaseService{
             throw err;
         }
 
-        const createdComment = await _commentRepository.create(comment);
+        const createdComment = await _commentRepository.create({...comment, autor: userId});
         idea.comments.push(createdComment);
 
         return await _ideaRepository.update(ideaId, {comments: idea.comments});
